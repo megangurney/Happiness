@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <title>THINK OF TITLE MEGAN ETC ETC</title>
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+   <script type="text/javascript" src="d3.min.js"></script>
+
+   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+</head>
+
+    <body>
+
+          <div id="main"><!--main div-->
+
+          <div id="header"><!--header div-->
+
+          <h1>THINK OF TITLE</h1>
+
+        </div><!--header div-->
+
+      <h1>MEGAN TITLE PLEASE</h1>
+
+          <form  id="form1" action=" ">
+
+                <p>Gender</p>
+                        <input type="radio" name="happyGender" value="7.48"/>Male<br />
+                        <input type="radio" name="happyGender" value="7.50"/>Female<br />
+
+                <p>How old are you?</p>
+                    <select id="happyAge">
+                        <option value="7.67">16 to 19</option>
+                        <option value="7.49">20 to 24</option>
+                        <option value="7.54">25 to 29</option>
+                        <option value="7.54">30 to 34</option>
+                        <option value="7.42">35 to 39</option>
+                        <option value="7.35">40 to 44</option>
+                        <option value="7.28">45 to 49</option>
+                        <option value="7.23">50 to 54</option>
+                        <option value="7.31">55 to 59</option>
+                        <option value="7.57">60 to 64</option>
+                        <option value="7.81">65 to 69</option>
+                        <option value="7.80">70 to 74</option>
+                        <option value="7.75">75 to 79</option>
+                        <option value="7.63">80 to 84</option>
+                        <option value="7.56">85 to 89</option>
+                        <option value="7.39">90 and over</option>
+                    </select>
+                  <br />
+
+
+
+                <p>What is your relationship status?</p>
+                    <select id="happyRelationship">
+                        <option value="7.75">Living in a couple: married or civil partner</option>
+                        <option value="7.55">Living in a couple: cohabiting or same sex couple</option>
+                        <option value="7.23">Not living in a couple: single or in a relationship</option>
+                        <option value="7.35">Not living in a couple: widow or surviving civil partner</option>
+                        <option value="7.00">Not living in a couple: divorced or separated</option>
+                    </select>
+                  <br />
+
+
+                <p>Describe your ethnicity.</p>
+                    <select id="happyEthnicity">
+                        <option value="7.50">White</option>
+                        <option value="7.08">Gypsy/ Traveller /Irish Traveller</option>
+                        <option value="7.20">Mixed/ multiple ethnic groups</option>
+                        <option value="7.55">Indian</option>
+                        <option value="7.44">Pakistani</option>
+                        <option value="7.45">Bangladeshi</option>
+                        <option value="7.53">Chinese</option>
+                        <option value="7.45">Other Asian background</option>
+                        <option value="7.27">Black/ African/ Caribbean/ Black British</option>
+                        <option value="7.14">Arab</option>
+                        <option value="7.38">Other ethnic group</option>
+                    </select>
+                  <br />
+
+                <p>Which religion do you identify with?</p>
+                    <select id="happyReligion">
+                        <option value="7.39">No religion</option>
+                        <option value="7.55">Christian (all denominations)</option>
+                        <option value="7.39">Buddhist</option>
+                        <option value="7.53">Hindu</option>
+                        <option value="7.43">Jewish</option>
+                        <option value="7.41">Muslim</option>
+                        <option value="7.49">Sikh</option>
+                        <option value="7.27">Any other Religion</option>
+                    </select>
+                  <br />
+
+                <p>Describe your sexual identity.</p>
+                    <select id="happySex">
+                        <option value="7.50">Heterosexual or Straight</option>
+                        <option value="7.24">Gay or Lesbian</option>
+                        <option value="7.03">Bisexual</option>
+                        <option value="7.25">Other</option>
+                        <option value="7.34">Do not know or would rather not say</option>
+                    </select>
+                  <br />
+
+                <p>Disability</p>
+                        <input type="radio" name="happyDisability" value="6.83" />(Equality Act) Disabled<br />
+                        <input type="radio" name="happyDisability" value="7.74" />Not (Equality Act) Disabled<br />
+
+
+              <input type="submit" value="Submit">
+
+
+
+        </form>
+
+      <p>Score: <span id="grade">__</span></p>
+      <p id="grade2"></p>
+
+</div><!--main div-->
+
+<script>
+
+    document.getElementById("form1").onsubmit=function() {
+         happyGender = parseInt(document.querySelector('input[name = "happyGender"]:checked').value);
+         happyAge = parseInt(document.getElementById("happyAge").value);
+         happyRelationship = parseInt(document.getElementById("happyRelationship").value);
+         happyEthnicity = parseInt(document.getElementById("happyEthnicity").value);
+         happyReligion = parseInt(document.getElementById("happyReligion").value);
+         happySex = parseInt(document.getElementById("happySex").value);
+         happyDisability = parseInt(document.querySelector('input[name = "happyDisability"]:checked').value);
+
+            result = (happyGender + happyAge + happyRelationship + happyEthnicity + happyReligion + happySex + happyDisability) / 7;
+
+                 document.getElementById("grade").innerHTML = result;
+
+                      return false;
+          }
+  </script>
+
+  <div id="dataDiv" style="width:70%; height:400px;"><!--data div-->
+
+  </div><!--data div-->
+
+<script>
+
+    var result = {
+      x: [7.13, 7.63]
+      type: "bar"
+      name: "trace1"
+    };
+
+    var data =[result];
+
+    var layout = {
+      title:How happy are you?
+    };
+
+    Plotly.newPlot("myDiv", data, layout);
+
+</script>
+
+</body>
+
+</html>
