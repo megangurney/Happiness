@@ -16,10 +16,50 @@ border-radius: 10px;
 #header {
 margin-top: 0;
 border: 2px solid black;
+border-radius: 10px;
 padding: 5px;
-height: 250px;
-background: beige;
-background-image: url("https://upload.wikimedia.org/wikipedia/commons/1/1c/Emojikeyboardiphone.jpg");
-color: darkblue;
-text-indent: 140px;
+height: 90px;
+background: darkblue;
+color: white;
+text-align: center;
+}
+
+#vis
+{
+width: 80%;
+max-width: 950px;
+border: 1px gray solid;
+border-top: 1px solid black;
+border-bottom: 1px solid black;
+overflow: auto;
+padding: 10px;
+margin: auto;;
+border-radius: 10px;
+background-color: white;
+}
+
+.bars {
+width: 300px;
+height: 25px;
+margin: 10px 0 0 0;
+border-radius: 4px;
+}
+
+#bar0 {
+background-color: darkgreen;
+}
+
+#bar1 {
+background-color: red;
+}
+
+#bar2 {
+background-color: darkgreen;
+}
+
+.number {
+color: white;
+text-align: right;
+padding: 3px;
+font-size: 12px;
 }

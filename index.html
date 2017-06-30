@@ -1,30 +1,21 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
-
-  <title>THINK OF TITLE MEGAN ETC ETC</title>
-
-  <link rel="stylesheet" type="text/css" href="style.css">
-
-   <script type="text/javascript" src="d3.min.js"></script>
-
-   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-
+  <title>How happy are you?</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="happy.js"></script>
 </head>
 
     <body>
 
-          <div id="main"><!--main div-->
+<div id="main"><!--main div-->
 
           <div id="header"><!--header div-->
+                <h1>How happy are you?</h1>
+          </div><!--header div-->
 
-          <h1>THINK OF TITLE</h1>
-
-        </div><!--header div-->
-
-      <h1>MEGAN TITLE PLEASE</h1>
+      <h1>How happy are you?</h1>
 
           <form  id="form1" action=" ">
 
@@ -53,8 +44,6 @@
                     </select>
                   <br />
 
-
-
                 <p>What is your relationship status?</p>
                     <select id="happyRelationship">
                         <option value="7.75">Living in a couple: married or civil partner</option>
@@ -64,7 +53,6 @@
                         <option value="7.00">Not living in a couple: divorced or separated</option>
                     </select>
                   <br />
-
 
                 <p>Describe your ethnicity.</p>
                     <select id="happyEthnicity">
@@ -110,9 +98,7 @@
                         <input type="radio" name="happyDisability" value="7.74" />Not (Equality Act) Disabled<br />
 
 
-              <input type="submit" value="Submit">
-
-
+              <input type="submit" value="Submit" onsubmit="showHide()">
 
         </form>
 
@@ -122,45 +108,72 @@
 </div><!--main div-->
 
 <script>
-
     document.getElementById("form1").onsubmit=function() {
-         happyGender = parseInt(document.querySelector('input[name = "happyGender"]:checked').value);
-         happyAge = parseInt(document.getElementById("happyAge").value);
-         happyRelationship = parseInt(document.getElementById("happyRelationship").value);
-         happyEthnicity = parseInt(document.getElementById("happyEthnicity").value);
-         happyReligion = parseInt(document.getElementById("happyReligion").value);
-         happySex = parseInt(document.getElementById("happySex").value);
-         happyDisability = parseInt(document.querySelector('input[name = "happyDisability"]:checked').value);
+         happyGender = parseFloat(document.querySelector('input[name = "happyGender"]:checked').value);
+         happyAge = parseFloat(document.getElementById("happyAge").value);
+         happyRelationship = parseFloat(document.getElementById("happyRelationship").value);
+         happyEthnicity = parseFloat(document.getElementById("happyEthnicity").value);
+         happyReligion = parseFloat(document.getElementById("happyReligion").value);
+         happySex = parseFloat(document.getElementById("happySex").value);
+         happyDisability = parseFloat(document.querySelector('input[name = "happyDisability"]:checked').value);
 
             result = (happyGender + happyAge + happyRelationship + happyEthnicity + happyReligion + happySex + happyDisability) / 7;
 
-                 document.getElementById("grade").innerHTML = result;
+                 document.getElementById("grade").innerHTML = parseFloat(result).toFixed(2);
 
                       return false;
           }
-  </script>
 
-  <div id="dataDiv" style="width:70%; height:400px;"><!--data div-->
-
-  </div><!--data div-->
-
-<script>
-
-    var result = {
-      x: [7.13, 7.63]
-      type: "bar"
-      name: "trace1"
-    };
-
-    var data =[result];
-
-    var layout = {
-      title:How happy are you?
-    };
-
-    Plotly.newPlot("myDiv", data, layout);
+          function showHide() {
+            var div = document.getElementById("vis");
+            if (div.style.display == 'none') {
+                div.style.display = '';
+                                              }
+              else {
+                div.style.display = 'none';
+                    }
+                              }
 
 </script>
+
+<div id="vis" style="display:none"><!--vis div-->
+
+  <h2>How does your happiness compare?</h2>
+
+        <div id="bar0" class="bars">
+            <p id="bartext0" class="number"></p>
+            </div>
+            <div id="name0"></div>
+
+        <div id="bar1" class="bars">
+            <p id="bartext1" class="number"></p>
+            </div>
+            <div id="name1"></div>
+
+        <div id="bar2" class="bars">
+            <p id="bartext2" class="number"></p>
+            </div>
+            <div id="name2"></div>
+
+                        <script>
+
+                        var comparisons = [
+                        {name: "Lowest happiness score", Total: 7.13},
+                        {name: "Your score", Total:
+                        document.getElementById("grade").value
+                        },
+                        {name: "Highest happiness score", Total: 7.63}
+                        ];
+
+                        for (var i = 0; i<comparisons.length; i++) {
+                        document.getElementById("name" + i).innerHTML= comparisons[i].name;
+                        document.getElementById("bartext" + i).innerHTML= comparisons[i].Total;
+                        document.getElementById("bar" + i).style.width = comparisons[i].Total*100-700 + "%";
+                        };
+
+                        </script>
+
+</div><!--vis div-->
 
 </body>
 
