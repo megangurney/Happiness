@@ -3,6 +3,36 @@ background-color: lightblue;
 font-family: Helvetica;
 }
 
+#intro {
+width: 80%;
+max-width: 950px;
+margin: auto;
+padding: 20px;
+background-color: white;
+border-radius: 10px;
+text-align: justify;
+}
+
+#happypic {
+width: 80%;
+max-width: 950px;
+padding: 10px;
+align-content: left;
+display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#form {
+width: 80%;
+max-width: 950px;
+border: 1px gray solid;
+margin: auto;
+padding: 10px;
+background-color: white;
+border-radius: 10px;
+}
+
 #main {
 width: 80%;
 max-width: 950px;
@@ -19,9 +49,10 @@ border: 2px solid black;
 border-radius: 10px;
 padding: 5px;
 height: 90px;
-background: darkblue;
+background-image: url(http://www.publicdomainpictures.net/pictures/40000/velka/sky-1363333250XvV.jpg);
 color: white;
 text-align: center;
+font-size-adjust: auto;
 }
 
 #vis
@@ -32,10 +63,11 @@ border: 1px gray solid;
 border-top: 1px solid black;
 border-bottom: 1px solid black;
 overflow: auto;
-padding: 10px;
+padding: 20px;
 margin: auto;;
 border-radius: 10px;
 background-color: white;
+display: none;
 }
 
 .bars {
@@ -62,4 +94,14 @@ color: white;
 text-align: right;
 padding: 3px;
 font-size: 12px;
+}
+
+#outro {
+width: 80%;
+max-width: 950px;
+margin: auto;
+padding: 10px;
+background-color: white;
+border-radius: 10px;
+text-align: justify;
 }

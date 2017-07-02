@@ -2,9 +2,10 @@
 <html>
 
 <head>
-  <title>How happy are you?</title>
+  <title>Who is the happiest?</title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="happy.js"></script>
+        <meta charset=utf-8>
 </head>
 
     <body>
@@ -12,10 +13,23 @@
 <div id="main"><!--main div-->
 
           <div id="header"><!--header div-->
-                <h1>How happy are you?</h1>
+                <h1>Who is the happiest?</h1>
           </div><!--header div-->
 
-      <h1>How happy are you?</h1>
+          <div id="intro"><!--intro div-->
+            <h3>You’re more likely to be anxious if you’re a single female and less likely to consider your life worthwhile if you’re a male aged 90 and over, suggests data collected by the ONS (Office of National Statistics).</h3>
+            <p>Participants were asked how satisfied they are with their life, to what extent they feel the things they do in their life are worthwhile, how happy they felt yesterday and how anxious they felt yesterday.</p>
+            <p>Each answer was given on a scale from 0 to 10, with 0 being the lowest and 10 being the highest, and data was recorded alongside the protected characteristics of age, disability, marriage and civil partnership, race, religion or belief, and sex and sexual orientation.</p>
+            <p>Use the form below to see if you can guess which demographic would have the lowest well-being score, or which demographic has the highest well-being score.</p>
+            <p>You can also use the form to fill out your own information, to see how you compare to the highest and lowest possible score.</p>
+
+
+          </div><!--intro div-->
+
+                <div id="body"><!--form div-->
+
+
+          <div id="form">
 
           <form  id="form1" action=" ">
 
@@ -105,6 +119,71 @@
       <p>Score: <span id="grade">__</span></p>
       <p id="grade2"></p>
 
+      <div id="vis"><!--vis div-->
+
+        <h2>How does your happiness compare?</h2>
+
+              <div id="bar0" class="bars">
+                  <p id="bartext0" class="number"></p>
+                  </div>
+                  <div id="name0"></div>
+
+              <div id="bar1" class="bars">
+                  <p id="bartext1" class="number"></p>
+                  </div>
+                  <div id="name1"></div>
+
+              <div id="bar2" class="bars">
+                  <p id="bartext2" class="number"></p>
+                  </div>
+                  <div id="name2"></div>
+
+                              <script>
+
+                              var comparisons = [
+                              {name: "Lowest happiness score", Total: 7.13},
+                              {name: "Your score", Total:
+                              document.getElementById("grade").value
+                              },
+                              {name: "Highest happiness score", Total: 7.63}
+                              ];
+
+                              for (var i = 0; i<comparisons.length; i++) {
+                              document.getElementById("name" + i).innerHTML= comparisons[i].name;
+                              document.getElementById("bartext" + i).innerHTML= comparisons[i].Total;
+                              document.getElementById("bar" + i).style.width = comparisons[i].Total*100-700 + "%";
+                              };
+
+                              </script>
+
+                              <p>Your score was created by taking the average score of each measure of well-being for the protected characteristics you selected. This chart shows how it compares to the highest and lowest possible well-being scores.</p>
+
+      </div><!--vis div-->
+
+
+
+    </div><!--form div-->
+
+    <div id="outro"><!--outro div-->
+
+    <p>Results of the survey showed that those who are disabled under the Equality act had the highest average score for feeling anxious, and the lowest score for feeling as though they are happy and satisfied with their life.</p>
+    <p>Three in every ten people who identified themselves as bisexual reported their anxiety as being high, answering 6-10 out of 10, when only two in every ten people who identified themselves as heterosexual or straight answered in the same way.</p>
+    <p>Those who identify as gay, lesbian, or bisexual reported lower than average well-being, with particularly increased feelings of anxiety, and participants who identified themselves as heterosexual or straight tended to have the highest levels of well-being across the four measures of personal well-being.</p>
+
+    <img src="http://maxpixel.freegreatpicture.com/static/photo/1x/Female-Healthy-Happy-Lifestyle-Pretty-Woman-Young-1509956.jpg" alt="happy" id="happypic">
+
+
+    <p>Commenting on their own data, the ONS (Office for National Statistics) have suggested that general health, employment and relationship status have the greatest association with personal well-being, yet “potential factors influencing the result presented in this release could include health outcomes, discrimination in access to services (including health services) and in the workplace”.</p>
+    <p>“It must also be recognised that these estimates do not account for other potential factors which may influence well-being ratings.”</p>
+    <p>A <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/culturalidentity/sexuality/bulletins/sexualidentityuk/2015#the-uk-population-mainly-identifies-as-heterosexual-or-straight">previous report by the ONS</a> showed that those living in London are more likely to self-identify as lesbian, gay or bisexual, and that personal well-being is generally <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/wellbeing/bulletins/measuringnationalwellbeing/2015to2016#people-in-london-reported-lower-worthwhile-ratings-than-uk-overall
+">lower in London.</a></p>
+
+
+
+</div><!--outro div-->
+
+</div><!--body div-->
+
 </div><!--main div-->
 
 <script>
@@ -120,60 +199,29 @@
             result = (happyGender + happyAge + happyRelationship + happyEthnicity + happyReligion + happySex + happyDisability) / 7;
 
                  document.getElementById("grade").innerHTML = parseFloat(result).toFixed(2);
+                 document.getElementById("vis").style.display="block";
+
+                 document.getElementById("grade").innerHTML = parseFloat(result).toFixed(2);
+                 document.getElementById('vis').style.display = "block";
+
+                 document.getElementById("name0").innerHTML= "Lowest happiness score";
+                 document.getElementById("bartext0").innerHTML= 7.13;
+                 document.getElementById("bar0").style.width = 7.13*100-700 + "%";
+
+                 document.getElementById("name1").innerHTML= "Your score";
+                 document.getElementById("bartext1").innerHTML= parseFloat(result).toFixed(2);
+                 document.getElementById("bar1").style.width = parseFloat(result).toFixed(2)*100-700 + "%";
+
+                 document.getElementById("name2").innerHTML= "Highest happiness score";
+                 document.getElementById("bartext2").innerHTML= 7.63;
+                 document.getElementById("bar2").style.width = 7.63*100-700 + "%";
 
                       return false;
           }
 
-          function showHide() {
-            var div = document.getElementById("vis");
-            if (div.style.display == 'none') {
-                div.style.display = '';
-                                              }
-              else {
-                div.style.display = 'none';
-                    }
-                              }
-
 </script>
 
-<div id="vis" style="display:none"><!--vis div-->
 
-  <h2>How does your happiness compare?</h2>
-
-        <div id="bar0" class="bars">
-            <p id="bartext0" class="number"></p>
-            </div>
-            <div id="name0"></div>
-
-        <div id="bar1" class="bars">
-            <p id="bartext1" class="number"></p>
-            </div>
-            <div id="name1"></div>
-
-        <div id="bar2" class="bars">
-            <p id="bartext2" class="number"></p>
-            </div>
-            <div id="name2"></div>
-
-                        <script>
-
-                        var comparisons = [
-                        {name: "Lowest happiness score", Total: 7.13},
-                        {name: "Your score", Total:
-                        document.getElementById("grade").value
-                        },
-                        {name: "Highest happiness score", Total: 7.63}
-                        ];
-
-                        for (var i = 0; i<comparisons.length; i++) {
-                        document.getElementById("name" + i).innerHTML= comparisons[i].name;
-                        document.getElementById("bartext" + i).innerHTML= comparisons[i].Total;
-                        document.getElementById("bar" + i).style.width = comparisons[i].Total*100-700 + "%";
-                        };
-
-                        </script>
-
-</div><!--vis div-->
 
 </body>
 
